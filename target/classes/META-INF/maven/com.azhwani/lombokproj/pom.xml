@@ -1,0 +1,74 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.azhwani</groupId>
+  <artifactId>lombokproj</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  
+  <dependencies>
+       <dependency>
+		    <groupId>org.projectlombok</groupId>
+		    <artifactId>lombok</artifactId>
+		    <version>1.18.4</version>
+		    <scope>provided</scope>
+		</dependency>
+		
+		<!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-core -->
+		<dependency>
+		    <groupId>com.fasterxml.jackson.core</groupId>
+		    <artifactId>jackson-core</artifactId>
+		    <version>2.11.0</version>
+		</dependency>
+		
+		<!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-databind -->
+		<dependency>
+		    <groupId>com.fasterxml.jackson.core</groupId>
+		    <artifactId>jackson-databind</artifactId>
+		    <version>2.11.0</version>
+		</dependency>
+		
+		
+		
+   </dependencies>
+   
+   <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    	<lombokSource>${project.basedir}/src/main/java/com/azhwani</lombokSource>
+    </properties>
+   
+   <build>
+        <plugins>
+            <plugin>
+	            <groupId>org.projectlombok</groupId>
+	            <artifactId>lombok-maven-plugin</artifactId>
+	            <version>1.18.12.0</version>
+	            <executions>
+	              <execution>
+	                <phase>generate-sources</phase>
+	                <goals>
+	                  <goal>delombok</goal>
+	                </goals>
+	              </execution>
+	            </executions>
+	            <configuration>
+	              <sourceDirectory>${lombokSource}</sourceDirectory>
+	              <verbose>true</verbose>
+	              <formatPreferences>
+	                <generateDelombokComment>skip</generateDelombokComment>
+	                <javaLangAsFQN>skip</javaLangAsFQN>
+	                <suppressWarnings>skip</suppressWarnings>
+	              </formatPreferences>
+	            </configuration>
+          	</plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.6.0</version>
+                <configuration>
+                    <source>1.8</source>
+                    <target>1.8</target>
+                </configuration>
+            </plugin>
+        </plugins>
+   </build>
+  
+</project>
